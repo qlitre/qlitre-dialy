@@ -1,25 +1,24 @@
 <script setup lang="ts">
 
 const route = useRoute()
-const page: number = Number(route.params.p || 1)
-const selectedTagId: string = String(route.params.tagId == undefined ? '' : route.params.tagId)
+const page = Number(route.params.p || 1)
+const selectedTagId = String(route.params.tagId == undefined ? '' : route.params.tagId)
 
-const limit: number = 5
-const offset: number = (page - 1) * limit
-const params: object = { limit: limit, offset: offset }
+const limit = 10
+const params = { limit: limit, offset: (page - 1) * limit }
 if (selectedTagId) {
     params["tagId"] = selectedTagId
 }
 
-const { data: posts } = await useFetch('/api/postList', { params: params })
-const { data: tags, refresh } = await useFetch(`/api/tagList`)
+const { data: posts, refresh } = await useFetch('/api/postList', { params: params })
+const { data: tags } = await useFetch(`/api/tagList`)
 
-const selectedTagObject: object =
+const selectedTagObject =
     selectedTagId !== '' ?
         tags.value.contents.find((content) => content.id === selectedTagId) : {};
 
-const totalCount: number = posts.value.totalCount
-const numPages: number = Math.ceil(totalCount / limit)
+const totalCount = posts.value.totalCount
+const numPages = Math.ceil(totalCount / limit)
 
 </script>
 

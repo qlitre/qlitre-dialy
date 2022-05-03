@@ -17,7 +17,7 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
         queries["filters"] = `tag[contains]${params.tagId}`
     }
 
-    const data = client.getList<Post>({
+    const data = await client.getList<Post>({
         endpoint: 'post',
         queries: queries
     })

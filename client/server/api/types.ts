@@ -13,8 +13,8 @@ export type Post = {
   text: string
 }
 
-export type About={
-  title:string
-  image:MicroCMSImage
-  body:string
+export type About = {
+  title: string
+  image: MicroCMSImage
+  body: string
 }

@@ -1,13 +1,12 @@
 <script setup lang="ts">
 const route = useRoute()
-const page: number = Number(route.query.page || 1)
-const query: string | string[] = route.query.q
-const limit: number = 5
-const offset: number = (page - 1) * limit
-const params: object = {
+const page = Number(route.query.page || 1)
+const query = route.query.q
+const limit = 10
+const params = {
   q: query,
   limit: limit,
-  offset: offset
+  offset: (page - 1) * limit
 }
 const { data: posts, refresh } = await useFetch('/api/search',
   {
@@ -15,8 +14,7 @@ const { data: posts, refresh } = await useFetch('/api/search',
   }
 )
 
-const totalCount: number = posts.value.totalCount
-const numPages: number = Math.ceil(totalCount / limit)
+const numPages = Math.ceil(posts.value.totalCount / limit)
 
 function submit(q: string) {
   return navigateTo({

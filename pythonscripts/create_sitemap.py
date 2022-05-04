@@ -75,7 +75,7 @@ def job():
     # 最後にトップURL
     url_element = et.SubElement(url_set, 'url')
     loc = et.SubElement(url_element, 'loc')
-    loc.text = HOST_URL
+    loc.text = f'{HOST_URL}/'
 
     # Nuxt3プロジェクトのpublicディレクトリに保存
     tree.write(f'{BASE_DIR}/client/public/sitemap.xml', encoding='utf-8', xml_declaration=True)

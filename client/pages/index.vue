@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 const route = useRoute()
+const ctx = useRuntimeConfig()
 const page = Number(route.params.p || 1)
 const selectedTagId = String(route.params.tagId == undefined ? '' : route.params.tagId)
 
@@ -17,13 +18,18 @@ const selectedTagObject =
     selectedTagId !== '' ?
         tags.value.contents.find((content) => content.id === selectedTagId) : {};
 
-const totalCount = posts.value.totalCount
-const numPages = Math.ceil(totalCount / limit)
+const numPages = Math.ceil(posts.value.totalCount / limit)
 
 </script>
 
 <template>
     <div>
+
+        <Head>
+            <Title>Qlitre's Dialy</Title>
+            <Link rel="canonical" :href="ctx.hostUrl" />
+        </Head>
+
         <div class="divider">
             <section class="container">
                 <!-- パンくずリスト -->

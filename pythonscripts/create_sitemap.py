@@ -63,11 +63,6 @@ def job():
     """
     url_set = et.Element('urlset')
     url_set.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
-    url_set.set("xmlns:news", "http://www.google.com/schemas/sitemap-news/0.9")
-    url_set.set("xmlns:xhtml", "http://www.w3.org/1999/xhtml")
-    url_set.set("xmlns:mobile", "http://www.google.com/schemas/sitemap-mobile/1.0")
-    url_set.set("xmlns:image", "http://www.google.com/schemas/sitemap-image/1.1")
-    url_set.set("xmlns:video", "http://www.google.com/schemas/sitemap-video/1.1")
     tree = et.ElementTree(element=url_set)
 
     # 記事を順番に書きこむ

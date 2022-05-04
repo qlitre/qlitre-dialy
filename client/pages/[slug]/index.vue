@@ -4,6 +4,7 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/hybrid.css'
 
 const route = useRoute();
+const ctx = useRuntimeConfig()
 const slug: string | string[] = route.params.slug;
 
 const { data: article } = await useFetch(`/api/postDetail`, {
@@ -22,6 +23,11 @@ const body = $.html()
 
 <template>
   <div class="main">
+
+    <Head>
+      <Title>{{ article.title }}</Title>
+      <Link rel="canonical" :href="`${ctx.hostUrl}/${slug}`" />
+    </Head>
     <span class="published">{{ $formatDate(article.publishedAt) }}</span>
     <span v-for="(tag, i) in article.tag" :key="tag.id" class="tag">
       {{ tag.name }}

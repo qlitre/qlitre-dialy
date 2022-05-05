@@ -1,13 +1,17 @@
 <template>
   <header class="header wrapper">
-    <nuxt-link :to='`/`'>
+    <NuxtLink :to='`/`'>
       <h1 class="title">
         Qlitre's Dialy
       </h1>
-    </nuxt-link>
+    </NuxtLink>
     <nav class="nav">
       <ul class="main-nav">
-        <li><a href="/about">About</a></li>
+        <li>
+          <NuxtLink :to="`/about`">
+            About
+          </NuxtLink>
+        </li>
       </ul>
     </nav>
   </header>

@@ -12,6 +12,12 @@ export default defineNuxtPlugin(() => {
                 dayjs.extend(timezone);
                 return dayjs.utc(inputDate).tz('Asia/Tokyo').format('YYYY-MM-DD')
             },
+            loadTwitter: () => {
+                const script = document.createElement('script');
+                script.setAttribute('src', 'https://platform.twitter.com/widgets.js')
+                script.setAttribute('async', 'true')
+                document.head.appendChild(script)
+            }
         }
     }
 })

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const route = useRoute()
 const ctx = useRuntimeConfig()
 const page = Number(route.params.p || 1)
@@ -20,16 +19,15 @@ const selectedTagObject =
 
 const numPages = Math.ceil(posts.value.totalCount / limit)
 
+
 </script>
 
 <template>
     <div>
-
         <Head>
             <Title>Qlitre's Dialy</Title>
             <Link rel="canonical" :href="ctx.hostUrl" />
         </Head>
-
         <div class="divider">
             <section class="container">
                 <!-- パンくずリスト -->
@@ -44,7 +42,6 @@ const numPages = Math.ceil(posts.value.totalCount / limit)
                 <Tags :tags="tags" />
             </aside>
         </div>
-
         <Pagination :numPages="numPages" :current="page" :selectedTagId="selectedTagId" />
     </div>
 </template>
@@ -92,4 +89,5 @@ const numPages = Math.ceil(posts.value.totalCount / limit)
         width: 100%;
     }
 }
+
 </style>

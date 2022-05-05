@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a class="btn" :href="`/`">
+    <NuxtLink class="btn" :to="`/`">
       TOPへ戻る
-    </a>
+    </NuxtLink>
   </div>
 </template>
 
